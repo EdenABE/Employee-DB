@@ -1,16 +1,27 @@
-const mysql = require("mysql");
-const inquirer = require("inquirer");
-require("console.table");
+// import mysql2
+const mysql = require('mysql')
+// import inquirer 
+const inquirer = require('inquirer'); 
+// import console.table
+const cTable = require('console.table'); 
+
+// connection to database
 const connection = mysql.createConnection({
-    host: 'localhost',
-    port: 3001,
-    user: 'root',
-    password: 'Purple',
-    database: 'employees_db'
+  host: 'localhost',
+  user: 'root',
+  password: 'Purple',
+  database: 'employees_db'
 });
 
-console.log("connected as id " + connection.threadId);
-console.log(`
+connection.connect(err => {
+  if (err) throw err;
+  console.log('connected as id ' + connection.threadId);
+  afterConnection();
+});
+
+// function after connection is established and welcome image shows 
+afterConnection = () => {
+  console.log(`
   ╔═══╗─────╔╗──────────────╔═╗╔═╗
   ║╔══╝─────║║──────────────║║╚╝║║
   ║╚══╦╗╔╦══╣║╔══╦╗─╔╦══╦══╗║╔╗╔╗╠══╦═╗╔══╦══╦══╦═╗
@@ -19,8 +30,7 @@ console.log(`
   ╚═══╩╩╩╣╔═╩═╩══╩═╗╔╩══╩══╝╚╝╚╝╚╩╝╚╩╝╚╩╝╚╩═╗╠══╩╝
   ───────║║──────╔═╝║─────────────────────╔═╝║
   ───────╚╝──────╚══╝─────────────────────╚══╝`)
-
-firstPrompt();
+  firstPrompt();
 function firstPrompt() {
 
     inquirer
@@ -84,10 +94,10 @@ function viewEmployee() {
     LEFT JOIN employee m
       ON m.id = e.manager_id`
   
-    connection.query(query, function (err, res) {
+    connection.query("SELECT * FROM employee", function (err, result) {
       if (err) throw err;
   
-      console.table(res);
+      console.table(result);
       console.log("Employees viewed!\n");
   
       firstPrompt();
@@ -340,7 +350,6 @@ function promptEmployeeRole(employeeChoices, roleChoices) {
       .then(function (answer) {
   
         var query = `UPDATE employee SET role_id = ? WHERE id = ?`
-        // when finished prompting, insert a new item into the db with that info
         connection.query(query,
           [ answer.roleId,  
             answer.employeeId
@@ -381,47 +390,44 @@ function addRole() {
       promptAddRole(departmentChoices);
     });
 }
-
 function promptAddRole(departmentChoices) {
 
-    inquirer
-      .prompt([
-        {
-          type: "input",
-          name: "roleTitle",
-          message: "Role title?"
-        },
-        {
-          type: "input",
-          name: "roleSalary",
-          message: "Role Salary"
-        },
-        {
-          type: "list",
-          name: "departmentId",
-          message: "Department?",
-          choices: departmentChoices
-        },
-      ])
-      .then(function (answer) {
-  
-        var query = `INSERT INTO role SET ?`
-  
-        connection.query(query, {
-          title: answer.title,
-          salary: answer.salary,
-          department_id: answer.departmentId
-        },
-          function (err, res) {
-            if (err) throw err;
-  
-            console.table(res);
-            console.log("Role Inserted!");
-  
-            firstPrompt();
-        });
-  
-    });
-}
+  inquirer
+    .prompt([
+      {
+        type: "input",
+        name: "roleTitle",
+        message: "Role title?"
+      },
+      {
+        type: "input",
+        name: "roleSalary",
+        message: "Role Salary"
+      },
+      {
+        type: "list",
+        name: "departmentId",
+        message: "Department?",
+        choices: departmentChoices
+      },
+    ])
+    .then(function (answer) {
 
-  
+      var query = `INSERT INTO role SET ?`
+
+      connection.query(query, {
+        title: answer.title,
+        salary: answer.salary,
+        department_id: answer.departmentId
+      },
+        function (err, res) {
+          if (err) throw err;
+
+          console.table(res);
+          console.log("Role Inserted!");
+
+          firstPrompt();
+      });
+});
+}
+}
