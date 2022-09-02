@@ -18,7 +18,7 @@ VALUES ("Software Engineer", 120000, 2);
 INSERT INTO role (title, salary, department_id)
 VALUES ("Accountant", 125000, 3);
 INSERT INTO role (title, salary, department_id)
-VALUES ("Medical Team Lead", 250000, 4);
+VALUES ("Medical Team Leader", 250000, 4);
 
 INSERT INTO employee (first_name, last_name, role_id, manager_id)
 VALUES ("Kal", "Abebe", 1, 3);

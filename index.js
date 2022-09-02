@@ -1,7 +1,5 @@
 const mysql = require("mysql");
-const express = require('express');
 const inquirer = require("inquirer");
-const fs = require('fs');
 require("console.table");
 const connection = mysql.createConnection({
     host: 'localhost',
@@ -11,14 +9,16 @@ const connection = mysql.createConnection({
     database: 'employees_db'
 });
 
-connection.connect(function (err) {
-  if (err) {
-      console.error("error connecting: " + err.stack);
-      return;
-  }
-
-  console.log("Connected to db as id " + connection.threadId);
-});
+console.log("connected as id " + connection.threadId);
+console.log(`
+  ╔═══╗─────╔╗──────────────╔═╗╔═╗
+  ║╔══╝─────║║──────────────║║╚╝║║
+  ║╚══╦╗╔╦══╣║╔══╦╗─╔╦══╦══╗║╔╗╔╗╠══╦═╗╔══╦══╦══╦═╗
+  ║╔══╣╚╝║╔╗║║║╔╗║║─║║║═╣║═╣║║║║║║╔╗║╔╗╣╔╗║╔╗║║═╣╔╝
+  ║╚══╣║║║╚╝║╚╣╚╝║╚═╝║║═╣║═╣║║║║║║╔╗║║║║╔╗║╚╝║║═╣║
+  ╚═══╩╩╩╣╔═╩═╩══╩═╗╔╩══╩══╝╚╝╚╝╚╩╝╚╩╝╚╩╝╚╩═╗╠══╩╝
+  ───────║║──────╔═╝║─────────────────────╔═╝║
+  ───────╚╝──────╚══╝─────────────────────╚══╝`)
 
 firstPrompt();
 function firstPrompt() {

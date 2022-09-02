@@ -24,7 +24,7 @@ WHEN you choose to update an employee role, you will be prompted to select an em
 ```
 Visual Studio Code
 Node.js
-Express, SQL, Inquirer and mysql packages
+Inquirer, console.table and mysql packages
 GitHub
 ```
 ## Links
@@ -44,7 +44,6 @@ npm i
 npm i inquirer
 npm i mysql
 npm i console.table
-npm i express 
 make sure to run .sql file in mySQL workbench before running index.js so that tables are able to render correctly
 run node index.js
 make sure index.js is connected to SQL before continuing
