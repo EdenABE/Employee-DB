@@ -32,6 +32,7 @@ afterConnection = () => {
   ───────╚╝──────╚══╝─────────────────────╚══╝`)
   firstPrompt();
 function firstPrompt() {
+  {
 
     inquirer
       .prompt(
@@ -429,5 +430,6 @@ function promptAddRole(departmentChoices) {
           firstPrompt();
       });
 });
+}
 }
 }
