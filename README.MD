@@ -1,4 +1,4 @@
-# Employee Directory 
+# Employee Directory
 
 ## Description
 
@@ -13,29 +13,34 @@ WHEN you choose to view all employees, you will be presented with a formatted ta
 WHEN you choose to add a department, you will be prompted to enter the name of the department and that department is added to the database
 WHEN you choose to add a role, you will be prompted to enter the name, salary, and department for the role and that role is added to the database
 WHEN you choose to add an employee, you will be prompted to enter the employee’s first name, last name, role, and manager, and that employee is added to the database
-WHEN you choose to update an employee role, you will be prompted to select an employee to update and their new role and this information is updated in the database 
+WHEN you choose to update an employee role, you will be prompted to select an employee to update and their new role and this information is updated in the database
 ```
+
 ## Mock-Up
-```
 
+https://drive.google.com/file/d/1yMNFmA7ez2t8nejFokHjAB6Y9og5Mt66/view
 
-```
 ## Technology Used
+
 ```
 Visual Studio Code
 Node.js
 Inquirer, console.table and mysql packages
 GitHub
 ```
+
 ## Links
+
 ```
 Github repository: https://github.com/EdenABE/Employee-DB
-  
+
 ```
+
 ## Installation
+
 ````
 Clone github repository
-Install all required dependencies 
+Install all required dependencies
 ```
 ## Usage
 ```
@@ -49,3 +54,4 @@ run node index.js
 make sure index.js is connected to SQL before continuing
 run through prompts as required
 ```
+````
