@@ -18,6 +18,7 @@ WHEN you choose to update an employee role, you will be prompted to select an em
 
 ## Mock-Up
 
+Please download the video here:
 https://drive.google.com/file/d/1yMNFmA7ez2t8nejFokHjAB6Y9og5Mt66/view
 
 ## Technology Used
